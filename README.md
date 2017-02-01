@@ -18,8 +18,7 @@ docker run -d --privileged=true --name centos7-apache-php -p 80:80 -v /var/docke
 ```
 
 docker-compose で使う際も、privileged: true の指定を忘れずに入れてください。
-document_root は /var/www/html です。
-mysqlのデータは /var/lib/mysql ですので、こちらもvolumeでマウントさせるか、busyboxコンテナを使用するなどしてください。 
+document_root は /var/www/html です。 
 
 systemdが動きますので、Apacheの（リロード|リスタート）は
 
