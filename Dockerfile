@@ -14,12 +14,9 @@ RUN yum --enablerepo=epel,remi,remi-php71 -y install php php-cli php-common php-
 
 RUN yum clean all
 
-RUN sed -i -e'151,151s/None/All/' /etc/httpd/conf/httpd.conf
+COPY ./dockerset.conf /etc/httpd/conf.d/
 
-RUN sed -i -e"s/\;date\.timezone\ \=/date\.timezone\ \= \'Asia\/Tokyo\'/" /etc/php.ini
-RUN sed -i -e"s/memory_limit\ \=\ 128M/memory_limit\ \=\ 512M/" /etc/php.ini
-RUN sed -i -e"s/post_max_size\ \=\ 8M/post_max_size\ \=\ 50M/" /etc/php.ini
-RUN sed -i -e"s/upload_max_filesize\ \=\ 2M/upload_max_filesize\ \=\ 50M/" /etc/php.ini
+COPY ./100-dockerset.ini /etc/php.d/
 
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 

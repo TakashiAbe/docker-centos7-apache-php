@@ -18,6 +18,22 @@ docker run -d --privileged=true --name centos7-apache-php -p 80:80 -v /var/docke
 ```
 
 docker-compose で使う際も、privileged: true の指定を忘れずに入れてください。
+
+独自の設定として
+
+```
+[PHP]
+memory_limit = 512M
+post_max_size = 50M
+upload_max_filesize = 50M
+
+
+[Date]
+date.timezone = 'Asia/Tokyo'
+```
+
+を入れています。
+
 document_root は /var/www/html です。 
 
 systemdが動きますので、Apacheの（リロード|リスタート）は
