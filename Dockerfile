@@ -10,9 +10,11 @@ RUN yum -y install epel-release
 RUN curl -O http://rpms.remirepo.net/RPM-GPG-KEY-remi && rpm --import RPM-GPG-KEY-remi && rm -f RPM-GPG-KEY-remi
 RUN curl -O http://rpms.famillecollet.com/enterprise/remi-release-7.rpm && rpm -Uvh remi-release-7.rpm && rm -f remi-release-7.rpm
 
-RUN yum --enablerepo=epel,remi,remi-php72 -y install supervisor php php-cli php-common php-devel php-gd php-json php-mbstring php-mcrypt php-mysqlnd php-opcache php-pdo php-pear php-bcmath php-pecl-apcu php-pecl-imagick php-pecl-redis php-pecl-uuid php-pecl-xdebug php-pecl-yaml php-pecl-zip
+RUN yum --enablerepo=epel,remi,remi-php72 -y install supervisor php php-cli php-common php-devel php-gd php-json php-mbstring php-mcrypt php-mysqlnd php-opcache php-pdo php-pear php-bcmath php-pecl-apcu php-pecl-imagick php-pecl-redis php-pecl-uuid php-pecl-xdebug php-pecl-yaml php-pecl-zip redis php-pecl-redis
 
 RUN yum clean all
+
+RUN systemctl enable redis.service
 
 COPY ./dockerset.conf /etc/httpd/conf.d/
 

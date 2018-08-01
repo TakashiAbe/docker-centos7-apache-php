@@ -4,6 +4,7 @@
 
 - PHP7 & composer
 - MySQLクライアント
+- Redisサーバ
 - Systemd導入
 - Crond導入
 - OSのロケーションを日本に
